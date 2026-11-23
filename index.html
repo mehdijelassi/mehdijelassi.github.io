@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mehdi Jelassi</title>
+    <meta name="description" content="Mehdi Jelassi, Scientific Assistant at EPFL">
+    <meta name="author" content="Mehdi Jelassi">
+    <meta property="og:title" content="Mehdi Jelassi">
+    <meta property="og:description" content="Mehdi Jelassi, Scientific Assistant at EPFL">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #fefefe;
+            --ink: #333;
+            --secondary: #535353;
+            --link: #005fd3;
+            --link-hover: #00479e;
+        }
+
+        @media screen and (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: dark;
+                --page: #1b1c1e;
+                --ink: #e8e8e8;
+                --secondary: #c6c6c6;
+                --link: #91bdff;
+                --link-hover: #c0d8ff;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: var(--page);
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            max-width: 50rem;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem;
+            color: var(--ink);
+            font: 1rem/1.5 Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        h1, h2, h3, figure, p, ul {
+            margin: 0;
+        }
+
+        a {
+            color: var(--link);
+            text-underline-offset: 0.12em;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 3px;
+        }
+
+        .headshot {
+            float: right;
+            width: 12rem;
+            margin: 0 0 0.5rem 2rem;
+        }
+
+        .headshot img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .identity, .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .identity {
+            justify-content: space-between;
+            gap: 0.25rem 1rem;
+            min-height: 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .social-links {
+            gap: 0.25rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.75rem;
+            min-height: 2.75rem;
+            text-decoration: none;
+        }
+
+        .social-links svg {
+            width: 1.5625rem;
+            height: 1.5625rem;
+            fill: currentColor;
+        }
+
+        main {
+            overflow-wrap: anywhere;
+        }
+
+        main > p, p + p, .papers li + li {
+            margin-top: 1rem;
+        }
+
+        sup, sub {
+            line-height: 0;
+        }
+
+        section {
+            clear: both;
+            margin-top: 1.75rem;
+        }
+
+        h2 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            scroll-margin-top: 1rem;
+        }
+
+        .papers {
+            padding: 0;
+            list-style: none;
+        }
+
+        .papers h3 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .paper-status {
+            color: var(--secondary);
+        }
+
+        .roles {
+            padding-left: 1.4rem;
+        }
+
+        .roles-intro + .roles, .roles li + li {
+            margin-top: 0.4rem;
+        }
+
+        .roles + .roles-intro {
+            margin-top: 1rem;
+        }
+
+        .service-heading {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.25rem 1rem;
+            margin-top: 1rem;
+        }
+
+        .service-detail {
+            margin-top: 0.35rem;
+            padding-left: 1.4rem;
+        }
+
+        .publication-details {
+            max-width: 66ch;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--link);
+        }
+
+        .publication-details h2 {
+            margin: 1.5rem 0 0.55rem;
+            font-size: 1.25rem;
+            line-height: 1.35;
+        }
+
+        .publication-details p + p {
+            margin-top: 0.9rem;
+        }
+
+        .result-label {
+            margin-block: 1.3rem;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .theorem {
+            margin-top: 0.85rem;
+            padding: 0.85rem 1rem;
+            border-left: 3px solid var(--link);
+            background: color-mix(in srgb, var(--link) 6%, var(--page));
+            scroll-margin-top: 1.25rem;
+        }
+
+        .theorem-label {
+            font-weight: 600;
+        }
+
+        .math {
+            font-family: "STIX Two Text", "Cambria Math", Cambria, serif;
+            white-space: normal;
+        }
+
+        .math-nowrap {
+            white-space: nowrap;
+        }
+
+        .citation {
+            white-space: nowrap;
+        }
+
+        @media screen and (max-width: 650px) {
+            .headshot {
+                width: clamp(5.75rem, 27vw, 8rem);
+                margin-left: 1.25rem;
+            }
+
+            .identity {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.15rem;
+            }
+
+            .social-links {
+                margin-left: -0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 30rem) {
+            body {
+                padding-top: 1.5rem;
+            }
+
+            header {
+                display: flow-root;
+            }
+
+            .headshot {
+                margin-bottom: 0;
+            }
+
+            h1 {
+                font-size: clamp(1.65rem, 7.8vw, 2rem);
+            }
+        }
+
+        @media print {
+            body {
+                max-width: none;
+                padding: 0;
+                font-size: 11pt;
+            }
+
+            .headshot {
+                width: 30mm;
+            }
+
+            h2, h3 {
+                break-after: avoid;
+            }
+
+            .papers li, .roles li {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <figure class="headshot">
+            <img
+                src="images/me.jpg.png"
+                width="1149"
+                height="1369"
+                alt="Portrait of Mehdi Jelassi"
+            >
+        </figure>
+
+        <div class="identity">
+            <h1>Mehdi Jelassi</h1>
+
+            <nav class="social-links" aria-label="Contact and profiles">
+                <a
+                    href="mailto:mehdi.jelassi@epfl.ch"
+                    title="Email"
+                    aria-label="Email"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v.3l-10 6.5L2 5.8v-.3z"/>
+                        <path d="M2 8.2v10.3A1.5 1.5 0 0 0 3.5 20h17a1.5 1.5 0 0 0 1.5-1.5V8.2l-9.45 6.14a1 1 0 0 1-1.1 0L2 8.2z"/>
+                    </svg>
+                </a>
+
+                <a
+                    href="https://scholar.google.com/citations?view_op=list_works&amp;hl=fr&amp;user=qNIjDwsAAAAJ"
+                    target="_blank"
+                    rel="noopener"
+                    title="Google Scholar"
+                    aria-label="Google Scholar"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3 1 9l11 6 9-4.9V17h2V9z"/>
+                        <path d="M5 13.2v4L12 21l7-3.8v-4L12 17z"/>
+                    </svg>
+                </a>
+
+                <!-- To show the GitHub icon, fill in its address and remove the two marker lines below. -->
+                <!-- HIDDEN: GitHub
+                <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.6 16.6 4 12l4.6-4.6L7.2 6l-6 6 6 6z"/>
+                        <path d="M15.4 16.6 20 12l-4.6-4.6L16.8 6l6 6-6 6z"/>
+                    </svg>
+                </a>
+                END HIDDEN -->
+
+                <!-- Uncomment when cv.pdf is available.
+                <a class="cv" href="cv.pdf">CV</a>
+                -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <p>
+            I am a Scientific Assistant in the
+            <a href="https://www.epfl.ch/labs/qcc/research/">Quantum Complexity and Cryptography Lab</a>
+            at <a href="https://www.epfl.ch/en/">EPFL</a>,
+            hosted by Prof.
+            <a href="https://people.epfl.ch/thomas.vidick?lang=fr">Thomas Vidick</a>
+            and working with Prof.
+            <a href="https://ic-people.epfl.ch/~achiesa/">Alessandro Chiesa</a>'s group.
+            I completed a BSc (2024) and an MSc (2026) in Mathematics at EPFL,
+            with a minor in Cybersecurity.
+        </p>
+
+        <p>
+            My research interests include quantum cryptography, quantum computing,
+            quantum complexity, and interactive proof systems.
+        </p>
+
+        <section aria-labelledby="research-experience">
+            <h2 id="research-experience">Research Experience</h2>
+
+            <p>
+                Since August 2026, I have been working with
+                <a href="https://zihanhu.cn/">Zihan Hu</a> and
+                <a href="https://dizidizidi.github.io/">Zijing Di</a> at <a href="https://www.epfl.ch/en/">EPFL</a> in the <a href="https://www.epfl.ch/labs/qcc/research/">Quantum Complexity and Cryptography Lab</a>
+                on quantum cryptography, constructing succinct arguments for QMA from quantum interactive
+                oracle proofs.
+            </p>
+
+            <p>
+                In June and July 2026, I was a pre-doctoral researcher under the supervision of Dr.
+                <a href="https://who.paris.inria.fr/Andre.Chailloux/">André Chailloux</a> at
+                <a href="https://www.inria.fr/fr/centre-inria-de-paris">INRIA (Institut National de Recherche en Informatique et en Automatique) Paris</a> in the
+                <a href="https://www.rocq.inria.fr/secret/">COSMIQ team</a>. I worked on quantum cryptanalysis for cryptography based on error-correcting codes as well as Euclidean lattices, attacking LWE with a quantum algorithm.
+            
+            </p>
+
+            <p>
+                In spring 2026, I worked on quantum cryptography,  proving the security of
+                cryptographic constructions in the quantum random oracle model, with
+                <a href="https://zihanhu.cn/">Zihan Hu</a> and
+                <a href="https://dizidizidi.github.io/">Zijing Di</a> in the <a href="https://compsec.epfl.ch/"> COMPSEC</a> group at EPFL.
+            </p>
+
+            <p>
+                During my master's studies, I spent a year conducting research
+                on combinatorics in Prof
+                <a href="https://sites.google.com/view/oliver-janzer/home">Oliver Janzer</a>'s group.
+                This work led to a
+                <a href="https://arxiv.org/abs/2512.01429"> paper</a> on probabilistic combinatorics
+                and a single-authored manuscript on Ramsey theory,
+                based on my master's thesis.
+            </p>
+
+            <p>
+                In summer 2024, I worked under the supervision of Prof.
+                <a href="https://people.epfl.ch/maryna.viazovska">Maryna Viazovska</a>
+                at the
+                <a href="https://www.epfl.ch/labs/tn/">Chair of Number Theory</a>, EPFL on Algebraic Number Theory, studying her
+                <a href="https://arxiv.org/abs/2308.15275"> paper</a>. I tried to extend this result to a broader class of lattices.
+        </section>
+
+        <section aria-labelledby="publications">
+            <h2 id="publications">Papers and Manuscripts</h2>
+
+            <ul class="papers" role="list">
+                <li>
+                    <h3>
+                        <a href="https://arxiv.org/abs/2512.01429">Tight bounds for expected propagation time of probabilistic zero forcing</a>
+                    </h3>
+                    <p>
+                        <strong>Mehdi Jelassi</strong>, J. Portier, R. Sarkar
+                    </p>
+                    <p class="paper-status">
+                        <i>Submitted.</i>
+                    </p>
+                </li>
+
+                <li>
+                    <h3>Online Ramsey numbers of paths</h3>
+                    <p>
+                        <strong>Mehdi Jelassi</strong>
+                    </p>
+                    <p class="paper-status">
+                        <i>In preparation</i>
+                        (expected on arXiv in November 2026).
+                    </p>
+                </li>
+
+                <li>
+                    <h3>Succinct Arguments for QMA in the Quantum Haar Random Oracle Model</h3>
+                    <p>
+                        <strong>Mehdi Jelassi</strong>, Z. Di, Z. Hu
+                    </p>
+                    <p class="paper-status">
+                        <i>In preparation</i>
+                        (expected on arXiv in November 2026).
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="teaching">
+            <h2 id="teaching">Teaching Assistance</h2>
+
+            <p class="roles-intro">
+                I was a Teaching Assistant at
+                <a href="https://www.epfl.ch/en/">EPFL</a>
+                for the following courses:
+            </p>
+
+            <ul class="roles" role="list">
+                <li>
+                    Fall 2025: Probability, taught by Prof. Juhan Aru.
+                </li>
+                <li>
+                    Fall 2025: Probability and Statistics,
+                    taught by Prof. Victor Panaretos.
+                </li>
+                <li>
+                    Spring 2025: Functional Analysis,
+                    taught by Prof. Juhan Aru.
+                </li>
+                <li>
+                    Spring 2025: Discrete Optimization,
+                    taught by Prof. Friedrich Eisenbrand.
+                </li>
+                <li>
+                    Fall 2023 and Fall 2024: Algebra, taught by Dr. Anna Lachowska.
+                </li>
+            </ul>
+
+            <p class="roles-intro">Other services at EPFL:</p>
+
+            <ul class="roles" role="list">
+                <li>
+                    Summer 2025: Grader for Linear Algebra II, taught by Prof. Friedrich Eisenbrand.
+                </li>
+                <li>
+                    Fall 2023 and Fall 2024: Mentor for undergraduate students
+                    in mathematics.
+                </li>
+            </ul>
+
+            <p class="service-heading">
+                <strong>Faculty Recruitment Committee Member</strong>
+                <strong>Fall 2023/ Fall 2024/ Fall 2025</strong>
+            </p>
+            <ul class="service-detail">
+                <li>
+                    Student representative in the search committees for tenure-track positions in
+                    Discrete Mathematics (2023), in Analysis (2024), and in Differential Geometry (2025): attended candidate talks and interviews,
+                    reviewed application files, evaluated teaching demonstrations, and voted in committee decisions.
+                </li>
+            </ul>
+        </section>
+
+        <section class="publication-details" aria-label="Semester project and master's thesis">
+            <section aria-labelledby="semester-project">
+                <h2 id="semester-project">Semester Project</h2>
+
+                <p>
+                    In our paper
+                    <a href="https://arxiv.org/abs/2512.01429">Jelassi, Portier, and Sarkar (2025)</a>,
+                    I worked on an extremal question about a growth process in which vertices become active randomly
+                    according to the following rule: in each step, an active vertex <var>u</var> with <var>x</var>
+                    active neighbors activates each of its inactive neighbors with probability
+                    <span class="math">(<var>x</var> + 1)/deg(<var>u</var>)</span>.
+                    I came up with new ideas which consist of designing a suitable optimization function for the proof
+                    of <a href="#ept-improved">Theorem 1</a> and a submartingale for the proof of
+                    <a href="#thm-throttling">Theorem 2</a>.
+                    While writing this paper, I made use of tools learned in my courses such as Azuma's inequality
+                    and Doob's Optional Stopping Theorem. We proved that
+                </p>
+
+                <p class="result-label">Results</p>
+
+                <article class="theorem" id="ept-improved" aria-labelledby="ept-improved-label">
+                    <p class="theorem-label" id="ept-improved-label">
+                        Theorem (Jelassi, Portier, Sarkar,
+                        <a href="https://arxiv.org/abs/2512.01429">2025</a>)
+                    </p>
+                    <p>
+                        For every connected graph <var>G</var> on <var>n</var> vertices, there exists a vertex
+                        that activates the entire graph in expected time
+                        <span class="math"><var>n</var>/2 + <var>O</var>(1)</span>.
+                    </p>
+                </article>
+
+                <article class="theorem" id="thm-throttling" aria-labelledby="thm-throttling-label">
+                    <p class="theorem-label" id="thm-throttling-label">
+                        Theorem (Jelassi, Portier, <a href="https://arxiv.org/abs/2512.01429">2025</a>)
+                    </p>
+                    <p>
+                        For every connected graph <var>G</var> on <var>n</var> vertices, there exists a set
+                        of <span class="math"><var>O</var>(<var>n</var><sup>1/2</sup>)</span> vertices that activates
+                        the entire graph in expected time <span class="math"><var>O</var>(<var>n</var><sup>1/2</sup>)</span>.
+                    </p>
+                </article>
+
+                <p>
+                    To see that the bounds in these two results are <strong>tight</strong> up to the implicit
+                    constant factors, consider the path. Our proof of Theorem 2 relies on
+                    <strong>completely different ideas from the proof of the previous bound</strong>
+                    by Geneson and Hogben (see Hogben for their proof).
+                </p>
+            </section>
+
+        
+        </section>
+    </main>
+</body>
+</html>
